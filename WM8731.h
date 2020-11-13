@@ -25,9 +25,9 @@
 /** Max Delay of I2C in ms */
 #define I2C_DELAY 400
 /** Data length */
-#define I2C_INIT_DATA_LENGTH 2U
+#define I2C_INIT_DATA_LENGTH 1U
 /** Sub Address Size */
-#define I2C_SUB_ADD_SIZE 0U
+#define I2C_SUB_ADD_SIZE 1U
 
 
 

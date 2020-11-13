@@ -35,29 +35,26 @@ freertos_WM8731_flag_t WM8731_init()
 	status = freertos_WM8731_fail;
 
 	/** Power down register */
-	uint8_t buffer[2] = {WM8731_POWER_DOWN_REGISTER, 0x00};
-	status = freertos_i2c_transfer(i2c_config.i2c_number, buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, 0, I2C_SUB_ADD_SIZE);
+	uint8_t buffer = 0x00;
+	status = freertos_i2c_transfer(i2c_config.i2c_number, &buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, WM8731_POWER_DOWN_REGISTER, I2C_SUB_ADD_SIZE);
 	vTaskDelay(pdMS_TO_TICKS(I2C_DELAY));
 
-	buffer[0] = WM8731_LEFT_LINE_IN;
-	buffer[1] = 23;
-	status = freertos_i2c_transfer(i2c_config.i2c_number, buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, 0, I2C_SUB_ADD_SIZE);
-	vTaskDelay(pdMS_TO_TICKS(I2C_DELAY));
-
-	buffer[0] = WM8731_RIGHT_LINE_IN;
-	buffer[1] = 23;
-	status = freertos_i2c_transfer(i2c_config.i2c_number, buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, 0, I2C_SUB_ADD_SIZE);
+	buffer = 23;
+	status = freertos_i2c_transfer(i2c_config.i2c_number, &buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, WM8731_LEFT_LINE_IN, I2C_SUB_ADD_SIZE);
 	vTaskDelay(pdMS_TO_TICKS(I2C_DELAY));
 
 
-	buffer[0] = WM8731_ANALOGUE_AUDIO;
-	buffer[1] = 0x05;
-	status = freertos_i2c_transfer(i2c_config.i2c_number, buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, 0, I2C_SUB_ADD_SIZE);
+	buffer = 23;
+	status = freertos_i2c_transfer(i2c_config.i2c_number, &buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, WM8731_RIGHT_LINE_IN, I2C_SUB_ADD_SIZE);
 	vTaskDelay(pdMS_TO_TICKS(I2C_DELAY));
 
-	buffer[0] = WM8731_CODEC_ENABLE;
-	buffer[1] = 0x01;
-	status = freertos_i2c_transfer(i2c_config.i2c_number, buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, 0, I2C_SUB_ADD_SIZE);
+
+	buffer = 0x05;
+	status = freertos_i2c_transfer(i2c_config.i2c_number, &buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, WM8731_ANALOGUE_AUDIO, I2C_SUB_ADD_SIZE);
+	vTaskDelay(pdMS_TO_TICKS(I2C_DELAY));
+
+	buffer = 0x01;
+	status = freertos_i2c_transfer(i2c_config.i2c_number, &buffer , I2C_INIT_DATA_LENGTH, WM8731_SLAVE_ADDRESS, WM8731_CODEC_ENABLE, I2C_SUB_ADD_SIZE);
 	vTaskDelay(pdMS_TO_TICKS(I2C_DELAY));
 
 	return status;
