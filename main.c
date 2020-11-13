@@ -40,7 +40,6 @@ int main(void)
 
   WM8731_sem = xSemaphoreCreateBinary();
 
-
   vTaskStartScheduler();
 
   volatile static int i = 0 ;
