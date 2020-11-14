@@ -18,7 +18,7 @@
 #include "semphr.h"
 #include "task.h"
 
-#define BAUDRATE 100000U
+#define BAUDRATE 115200U
 #define I2C0_SCL_PIN 2
 #define I2C0_SDA_PIN 3
 
@@ -49,5 +49,7 @@ typedef enum
 	freertos_WM8731_sucess,
 	freertos_WM8731_fail
 } freertos_WM8731_flag_t;
+
+freertos_WM8731_flag_t WM8731_init();
 
 #endif /* WM8731_H_ */
