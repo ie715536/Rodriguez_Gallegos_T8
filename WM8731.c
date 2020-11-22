@@ -59,3 +59,19 @@ freertos_WM8731_flag_t WM8731_init()
 
 	return status;
 }
+
+static void WM8731_write (uint8_t regis, uint16_t value)
+{
+	uint8_t add;
+	uint8_t buffer;
+
+	vTaskDelay(pdMS_TO_TICKS(10));
+
+	add = regis << 1;
+	add = add | (Hig(value)&1);
+
+	buffer = Low(value);
+
+
+
+}
