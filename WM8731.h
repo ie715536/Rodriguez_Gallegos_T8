@@ -18,7 +18,7 @@
 #include "semphr.h"
 #include "task.h"
 
-#define BAUDRATE 115200U
+#define BAUDRATE 100000U
 #define I2C0_SCL_PIN 2
 #define I2C0_SDA_PIN 3
 
