@@ -27,7 +27,7 @@
 /** Data length */
 #define I2C_INIT_DATA_LENGTH 1U
 /** Sub Address Size */
-#define I2C_SUB_ADD_SIZE 1U
+#define I2C_SUB_ADD_SIZE 0U
 
 
 
@@ -44,9 +44,6 @@
 #define WM8731_RESET_REGISTER	    0x0F //
 #define WM8731_CODEC_ENABLE			0x12
 
-#define Low(param) ((char *)&param)[0]
-#define Hig(param) ((char *)&param)[1]
-
 typedef enum
 {
 	freertos_WM8731_sucess,
@@ -54,5 +51,4 @@ typedef enum
 } freertos_WM8731_flag_t;
 
 freertos_WM8731_flag_t WM8731_init();
-
 #endif /* WM8731_H_ */

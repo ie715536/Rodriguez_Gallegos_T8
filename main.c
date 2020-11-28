@@ -73,6 +73,7 @@ void Audio_task(void * args)
 
 	for(;;)
 	{
+		/*TODO AUDIO FUNCTIONS*/
 		vTaskDelay(pdMS_TO_TICKS(400));
 	}
 }
